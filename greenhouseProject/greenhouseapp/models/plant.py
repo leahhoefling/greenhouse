@@ -3,8 +3,12 @@ from django.db import models
 
 class Plant(models.Model):
 
-    quantity = models.CharField(max_length=50)
-    # do I need the id from the external DB and the greenhouse FK?
+    quantity = models.IntegerField(blank=True, null=True)
+    # do I need the id from the external DB
+
+    # foreign key
+    # do i need a related name?-- something to keep in mind
+    greenhouse = models.ForeignKey(Greenhouse, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("plant")
